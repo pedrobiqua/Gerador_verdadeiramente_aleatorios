@@ -1,8 +1,12 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import librosa
+import os
 
 class Plotter:
+    """
+    Classe responsavel pela plotagem de graficos
+    """
     def __init__(self):
         pass
 
@@ -15,5 +19,15 @@ class Plotter:
         plt.xlabel('Tempo (s)')
         plt.ylabel('Amplitude')
         plt.legend()
+
+        # Diretório para salvar a imagem
+        diretorio_imagens = os.path.join(os.path.dirname(__file__), "..", "imgs", "image_results")
+
+        # Verifica se o diretório existe e, se não existir, cria
+        if not os.path.exists(diretorio_imagens):
+            os.makedirs(diretorio_imagens)
+        
         nome_arquivo = nome_arquivo + "_" + str(limiar) + ".png"
-        plt.savefig(nome_arquivo)
+        caminho_arquivo = os.path.join(diretorio_imagens, nome_arquivo)
+
+        plt.savefig(caminho_arquivo)
