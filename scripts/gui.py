@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import filedialog
 
 class GUI:
+    """
+    Classe onde é montado a janela do gerador
+    """
     def __init__(self):
         self.root = tk.Tk()
         self.root.withdraw()
