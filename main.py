@@ -4,6 +4,9 @@ from scripts.plotting import Plotter
 
 class Main:
     def __init__(self):
+        """
+        Inicializa os modulos de gui, plot e processamento de audio
+        """
         self.audio_processor = AudioProcessor()
         self.gui = GUI()
         self.plotter = Plotter()
