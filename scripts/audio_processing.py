@@ -29,16 +29,16 @@ class AudioProcessor:
 
     def __separar_em_caixas(self, y, del_t):
         
-        conj_dados = [y[i:i+del_t] for i in range(0, len(i), del_t)]
+        conj_dados = [y[i:i+del_t] for i in range(0, len(y), del_t)]
         dados = []
         for array in conj_dados:
-            fp = findpeaks(lookahead=1)
-            results = fp.fit(y)
-            tem_picos = (results['peak'] == 0).all()
+            fp = findpeaks(lookahead=50)
+            results = fp.fit(array)
+            tem_picos = (results['df']['peak'] == 0).all()
             if(tem_picos):
-                dados.append(0)
-            else:
                 dados.append(1)
+            else:
+                dados.append(0)
 
         return dados
         
@@ -48,11 +48,11 @@ class AudioProcessor:
         y, sr = librosa.load(audio_path, sr=None)
 
         # Utilizar o limiar para remover os ruidos
-        y = self.__remove_noise(y, multiple)
+        # y = self.__remove_noise(y, multiple)
 
         # Separa em caixas onde serão detectados os picos
         del_t = 100
-        __separar_em_caixas(y, del_t)
+        results = self.__separar_em_caixas(y, del_t)
 
         #===========================
         """
@@ -63,16 +63,16 @@ class AudioProcessor:
         """
         #===========================
 
-        array_peaks = results['df']['peak'].astype(int).values
+        # array_peaks = results['df']['peak'].astype(int).values
 
         # Variavel para debug do código, para ativar usar a função enable_debug()
         if self._debug:
             print(results)
             print("\n")
-            print(array_peaks)
+            # print(array_peaks)
             print("\n")
 
-        return array_peaks
+        return results
 
     def salvar_onda_retangular_csv(self, onda_retangular, output_path='onda_retangular.csv'):
         with open(output_path, 'w', newline='') as csvfile:
