@@ -12,6 +12,8 @@ class AudioProcessor:
     def __init__(self):
         self._debug = False
         self.plotter = Plotter()
+        self.count_1 = 0
+        self.count_0 = 0
 
     def enable_debug(self):
         self._debug = True
@@ -26,19 +28,77 @@ class AudioProcessor:
         y = np.delete(y, indices)
         print(len(y))
         return y
+    
+    def __is_count1_ok(self, total):
+        """
+        Valida se a distribuição de 1 está entre 45% e 55%
+        """
+        return ( ((self.count_1/total)*100) >= 45 and ((self.count_1/total)*100) <= 55 ), ((self.count_1/total)*100)
+    
+    def __is_count0_ok(self, total):
+        """
+        Valida se a distribuição de 0 está entre 45% e 55%
+        """
+        return ( ((self.count_0/total)*100) >= 45 and ((self.count_0/total)*100) <= 55 ), ((self.count_0/total)*100)
 
     def __separar_em_caixas(self, y, del_t):
         
         conj_dados = [y[i:i+del_t] for i in range(0, len(y), del_t)]
         dados = []
-        for array in conj_dados:
-            fp = findpeaks(lookahead=50)
-            results = fp.fit(array)
-            tem_picos = (results['df']['peak'] == 0).all()
-            if(tem_picos):
-                dados.append(1)
+        total = 0
+        flag = True
+        look_head = int(del_t/2)
+
+        while flag:
+            for array in conj_dados:
+                fp = findpeaks(lookahead=look_head, verbose=0)
+                results = fp.fit(array)
+                tem_picos = (results['df']['peak'] == 0).all()
+                
+                if(tem_picos):
+                    dados.append(1)
+                    # Conta a quantidade de 1
+                    self.count_1 += 1
+                
+                else:
+                    dados.append(0)
+                    # Conta a quantidade de 0
+                    self.count_0 += 1
+                
+                total += 1
+            
+            count_0_validate, percentual_0 = self.__is_count0_ok(total)
+            count_1_validate, percentual_1 = self.__is_count1_ok(total)
+
+            if count_0_validate or count_1_validate:
+                print(f"Percentuais O: {percentual_0}  1: {percentual_1}\n")
+                print("OK!")
+                flag = False
             else:
-                dados.append(0)
+                # Não foi encontrado uma boa distribuição, vamos mudar os parametros
+                if look_head == del_t:
+                    print("METODO LOOK HEAD NÃO FOI")
+                    flag = False
+                    break
+
+                if look_head <= 0:
+                    print("METODO LOOK HEAD NÃO FOI")
+                    flag = False
+                    break
+
+                if percentual_1 > percentual_0:
+                    look_head -= 5
+                else:
+                    look_head += 5
+                
+                print(f"Encontrando um metodo melhor!\npercentual_0: {percentual_0}, percentual_1: {percentual_1}\n")
+                print(f"Lookahead: {look_head}")
+                dados = []
+                total = 0
+                self.count_0 = 0
+                self.count_1 = 0
+
+            
 
         return dados
         
