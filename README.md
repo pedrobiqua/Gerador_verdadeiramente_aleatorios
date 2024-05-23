@@ -11,9 +11,17 @@ Neste contexto, nosso software oferece uma solução inovadora que utiliza os pr
 A principal motivação por trás deste software é fornecer uma ferramenta confiável e acessível para pesquisadores, cientistas e engenheiros que necessitam de números verdadeiramente aleatórios em suas atividades. Acreditamos que essa abordagem inovadora tem o potencial de contribuir significativamente para avanços em diversas áreas que dependem fortemente de números aleatórios para garantir a segurança, a confidencialidade e a precisão de seus processos e resultados.
 
 ## Resultados
-Demonstração dos resultados, utilizando como metrica o teste do qui-quadrado(X^2)
-![image](https://github.com/pedrobiqua/Gerador_verdadeiramente_aleatorios/assets/65463695/3ee381db-fb75-459e-8c91-9696f52a7212)
+Para analisar a plausibilidade dos resultados, utilizamos a métrica estatística do teste do qui-quadrado. Este teste nos permite avaliar a significância dos resultados obtidos. Abaixo, apresentamos os resultados iniciais da pesquisa, demonstrados por meio do teste do qui-quadrado (X²):
 
+Demonstração dos resultados utilizando o teste do qui-quadrado (X²)
+
+- Inicio do projeto:
+
+![image](https://github.com/pedrobiqua/Gerador_verdadeiramente_aleatorios/assets/65463695/5bf2eacc-6864-4f05-b92f-204c9490d5ac)
+  
+- Fase atual:
+
+![image](https://github.com/pedrobiqua/Gerador_verdadeiramente_aleatorios/assets/65463695/3ee381db-fb75-459e-8c91-9696f52a7212)
 
 ## Referências
 FALBRIARD, Calude; Brosso, Ines. Computação Quântica: A Realidade de uma Nova Era. Rio de Janeiro: Editora Alta Books, 2020.
