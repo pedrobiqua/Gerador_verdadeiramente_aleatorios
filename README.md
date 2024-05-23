@@ -11,7 +11,24 @@ Neste contexto, nosso software oferece uma solução inovadora que utiliza os pr
 A principal motivação por trás deste software é fornecer uma ferramenta confiável e acessível para pesquisadores, cientistas e engenheiros que necessitam de números verdadeiramente aleatórios em suas atividades. Acreditamos que essa abordagem inovadora tem o potencial de contribuir significativamente para avanços em diversas áreas que dependem fortemente de números aleatórios para garantir a segurança, a confidencialidade e a precisão de seus processos e resultados.
 
 ## Resultados
--todo
+Demonstração dos resultados, utilizando como metrica o teste do qui-quadrado(X^2)
+![image](https://github.com/pedrobiqua/Gerador_verdadeiramente_aleatorios/assets/65463695/3ee381db-fb75-459e-8c91-9696f52a7212)
+
 
 ## Referências
--todo
+FALBRIARD, Calude; Brosso, Ines. Computação Quântica: A Realidade de uma Nova Era. Rio de Janeiro: Editora Alta Books, 2020.
+
+WOLFRAM MATHWORLD, Random Number. Disponível em: https://mathworld.wolfram.com/RandomNumber.html. Acesso em: 15 fev. 2024.
+
+MATSUMOTO, M.; NISHIMURA, T. Mersenne twister: A 623-dimensionally equidistributed uniform pseudo-random number generator. ACM transactions on modeling and computer simulation: a publication of the Association for Computing Machinery, v. 8, n. 1, p. 3–30, 1998.
+
+MCNICHOL, T. Totally Random. Wired, 2003. Disponível em: https://www.wired.com/2003/08/random/. Acesso em: 21 fev. 2024.
+
+MATSUMOTO, Makoto; NISHIMURA, Takuji. ACM Transactions on Modeling and Computer Simulation, Vol. 8, No. 1, January 1998, Pages 3–30.
+
+DEYLLOT, Mônica Elizabete C. Física das Radiações: Fundamentos e Construção de Imagens. São Paulo: Editora Saraiva, 2015.
+
+ASSIS, Janilson Pinheiro de; SOUSA, Roberto Pequeno de; LINHARES, Paulo César Ferreira. Testes de hipóteses estatísticas. Mossoró: EdUFERSA, 2020.
+
+MCFEE, B., Raffel, C., Liang, D., Ellis, D. P., McVicar, M., Battenberg, E., ... & Oore, S. (2020). librosa: Audio and music signal analysis in Python. Retrieved from https://librosa.org/doc/main/index.html . Acesso em: 4 mar. 2024.
+
